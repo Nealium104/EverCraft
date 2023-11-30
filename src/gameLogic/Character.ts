@@ -5,12 +5,12 @@ export class Character {
     public HealthPoints: number,
     public HitDice: number,
     public Speed: number,
-    public Strength: number,
-    public Dexterity: number,
-    public Constitution: number,
-    public Wisdom: number,
-    public Intelligence: number,
-    public Charisma: number,
+    public Strength: Ability,
+    public Dexterity: Ability,
+    public Constitution: Ability,
+    public Wisdom: Ability,
+    public Intelligence: Ability,
+    public Charisma: Ability,
     public Skills: Skills,
     public Inventory: InventoryItem[],
     public Alignment?: Alignment
@@ -22,56 +22,112 @@ export class PlayerCharacter extends Character {
   public class?: string;
 }
 
-export type SkillProfAndExp = {
+export type Skill = {
+  governingAbility: Ability;
   isProficient: boolean;
   hasExpertise: boolean;
 };
 
-export type SkillProficiencies = {
-  athletics: SkillProfAndExp;
-  acrobatics: SkillProfAndExp;
-  sleightOfHand: SkillProfAndExp;
-  stealth: SkillProfAndExp;
-  arcana: SkillProfAndExp;
-  history: SkillProfAndExp;
-  investigation: SkillProfAndExp;
-  nature: SkillProfAndExp;
-  religion: SkillProfAndExp;
-  animalHandling: SkillProfAndExp;
-  insight: SkillProfAndExp;
-  medicine: SkillProfAndExp;
-  perception: SkillProfAndExp;
-  survival: SkillProfAndExp;
-  deception: SkillProfAndExp;
-  intimidation: SkillProfAndExp;
-  performance: SkillProfAndExp;
-  persuasion: SkillProfAndExp;
-};
+export type Ability {
+  score: number,
+}
 
 export class Skills {
-  // Stregnth
-  athletics: number = 10;
+  // Strength
+  athletics: Skill = {
+    governingAbility: Ability.Strength,
+    isProficient: false,
+    hasExpertise: false,
+  };
   // Dexterity
-  acrobatics: number = 10;
-  sleightOfHand: number = 10;
-  stealth: number = 10;
+  acrobatics: Skill = {
+    governingAbility: Ability.Dexterity,
+    isProficient: false,
+    hasExpertise: false,
+  };
+  sleightOfHand: Skill = {
+    governingAbility: Ability.Dexterity,
+    isProficient: false,
+    hasExpertise: false,
+  };
+  stealth: Skill = {
+    governingAbility: Ability.Dexterity,
+    isProficient: false,
+    hasExpertise: false,
+  };
   // Intelligence
-  arcana: number = 10;
-  history: number = 10;
-  investigation: number = 10;
-  nature: number = 10;
-  religion: number = 10;
+  arcana: Skill = {
+    governingAbility: Ability.Intelligence,
+    isProficient: false,
+    hasExpertise: false,
+  };
+  history: Skill = {
+    governingAbility: Ability.Intelligence,
+    isProficient: false,
+    hasExpertise: false,
+  };
+  investigation: Skill = {
+    governingAbility: Ability.Intelligence,
+    isProficient: false,
+    hasExpertise: false,
+  };
+  nature: Skill = {
+    governingAbility: Ability.Intelligence,
+    isProficient: false,
+    hasExpertise: false,
+  };
+  religion: Skill = {
+    governingAbility: Ability.Intelligence,
+    isProficient: false,
+    hasExpertise: false,
+  };
   // wisdom
-  animalHandling: number = 10;
-  insight: number = 10;
-  medicine: number = 10;
-  perception: number = 10;
-  survival: number = 10;
+  animalHandling: Skill = {
+    governingAbility: Ability.Wisdom,
+    isProficient: false,
+    hasExpertise: false,
+  };
+  insight: Skill = {
+    governingAbility: Ability.Wisdom,
+    isProficient: false,
+    hasExpertise: false,
+  };
+  medicine: Skill = {
+    governingAbility: Ability.Wisdom,
+    isProficient: false,
+    hasExpertise: false,
+  };
+  perception: Skill = {
+    governingAbility: Ability.Wisdom,
+    isProficient: false,
+    hasExpertise: false,
+  };
+  survival: Skill = {
+    governingAbility: Ability.Wisdom,
+    isProficient: false,
+    hasExpertise: false,
+  };
   // Charisma
-  deception: number = 10;
-  intimidation: number = 10;
-  performance: number = 10;
-  persuasion: number = 10;
+  deception: Skill = {
+    governingAbility: Ability.Charisma,
+    isProficient: false,
+    hasExpertise: false,
+  };
+  intimidation: Skill = {
+    governingAbility: Ability.Charisma,
+    isProficient: false,
+    hasExpertise: false,
+  };
+  performance: Skill = {
+    governingAbility: Ability.Charisma,
+    isProficient: false,
+    hasExpertise: false,
+  };
+  persuasion: Skill = {
+    governingAbility: Ability.Charisma,
+    isProficient: false,
+    hasExpertise: false,
+  };
 }
 
 export enum Alignment {
