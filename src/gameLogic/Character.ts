@@ -1,20 +1,28 @@
 export class Character {
+  public Strength: Ability;
+  public Dexterity: Ability;
+  public Constitution: Ability;
+  public Wisdom: Ability;
+  public Intelligence: Ability;
+  public Charisma: Ability;
+
   constructor(
     public name: string,
     public ArmorClass: number,
     public HealthPoints: number,
     public HitDice: number,
     public Speed: number,
-    public Strength: Ability,
-    public Dexterity: Ability,
-    public Constitution: Ability,
-    public Wisdom: Ability,
-    public Intelligence: Ability,
-    public Charisma: Ability,
     public Skills: Skills,
     public Inventory: InventoryItem[],
     public Alignment?: Alignment
-  ) {}
+  ) {
+    this.Strength = new Ability(10);
+    this.Dexterity = new Ability(10);
+    this.Constitution = new Ability(10);
+    this.Wisdom = new Ability(10);
+    this.Intelligence = new Ability(10);
+    this.Charisma = new Ability(10);
+  }
 }
 
 export class PlayerCharacter extends Character {
@@ -28,106 +36,142 @@ export type Skill = {
   hasExpertise: boolean;
 };
 
-export type Ability {
-  score: number,
+export class Ability {
+  constructor(public score: number) {}
 }
 
 export class Skills {
-  // Strength
-  athletics: Skill = {
-    governingAbility: Ability.Strength,
-    isProficient: false,
-    hasExpertise: false,
-  };
+  constructor(private character: Character) {}
+  get athletics(): Skill {
+    return {
+      governingAbility: this.character.Strength,
+      isProficient: false,
+      hasExpertise: false,
+    };
+  }
   // Dexterity
-  acrobatics: Skill = {
-    governingAbility: Ability.Dexterity,
-    isProficient: false,
-    hasExpertise: false,
-  };
-  sleightOfHand: Skill = {
-    governingAbility: Ability.Dexterity,
-    isProficient: false,
-    hasExpertise: false,
-  };
-  stealth: Skill = {
-    governingAbility: Ability.Dexterity,
-    isProficient: false,
-    hasExpertise: false,
-  };
+  get acrobatics(): Skill {
+    return {
+      governingAbility: this.character.Dexterity,
+      isProficient: false,
+      hasExpertise: false,
+    };
+  }
+  get sleightOfHand(): Skill {
+    return {
+      governingAbility: this.character.Dexterity,
+      isProficient: false,
+      hasExpertise: false,
+    };
+  }
+  get stealth(): Skill {
+    return {
+      governingAbility: this.character.Dexterity,
+      isProficient: false,
+      hasExpertise: false,
+    };
+  }
   // Intelligence
-  arcana: Skill = {
-    governingAbility: Ability.Intelligence,
-    isProficient: false,
-    hasExpertise: false,
-  };
-  history: Skill = {
-    governingAbility: Ability.Intelligence,
-    isProficient: false,
-    hasExpertise: false,
-  };
-  investigation: Skill = {
-    governingAbility: Ability.Intelligence,
-    isProficient: false,
-    hasExpertise: false,
-  };
-  nature: Skill = {
-    governingAbility: Ability.Intelligence,
-    isProficient: false,
-    hasExpertise: false,
-  };
-  religion: Skill = {
-    governingAbility: Ability.Intelligence,
-    isProficient: false,
-    hasExpertise: false,
-  };
+  get arcana(): Skill {
+    return {
+      governingAbility: this.character.Intelligence,
+      isProficient: false,
+      hasExpertise: false,
+    };
+  }
+  get history(): Skill {
+    return {
+      governingAbility: this.character.Intelligence,
+      isProficient: false,
+      hasExpertise: false,
+    };
+  }
+  get investigation(): Skill {
+    return {
+      governingAbility: this.character.Intelligence,
+      isProficient: false,
+      hasExpertise: false,
+    };
+  }
+  get nature(): Skill {
+    return {
+      governingAbility: this.character.Intelligence,
+      isProficient: false,
+      hasExpertise: false,
+    };
+  }
+  get religion(): Skill {
+    return {
+      governingAbility: this.character.Intelligence,
+      isProficient: false,
+      hasExpertise: false,
+    };
+  }
   // wisdom
-  animalHandling: Skill = {
-    governingAbility: Ability.Wisdom,
-    isProficient: false,
-    hasExpertise: false,
-  };
-  insight: Skill = {
-    governingAbility: Ability.Wisdom,
-    isProficient: false,
-    hasExpertise: false,
-  };
-  medicine: Skill = {
-    governingAbility: Ability.Wisdom,
-    isProficient: false,
-    hasExpertise: false,
-  };
-  perception: Skill = {
-    governingAbility: Ability.Wisdom,
-    isProficient: false,
-    hasExpertise: false,
-  };
-  survival: Skill = {
-    governingAbility: Ability.Wisdom,
-    isProficient: false,
-    hasExpertise: false,
-  };
+  get animalHandling(): Skill {
+    return {
+      governingAbility: this.character.Wisdom,
+      isProficient: false,
+      hasExpertise: false,
+    };
+  }
+  get insight(): Skill {
+    return {
+      governingAbility: this.character.Wisdom,
+      isProficient: false,
+      hasExpertise: false,
+    };
+  }
+  get medicine(): Skill {
+    return {
+      governingAbility: this.character.Wisdom,
+      isProficient: false,
+      hasExpertise: false,
+    };
+  }
+  get perception(): Skill {
+    return {
+      governingAbility: this.character.Wisdom,
+      isProficient: false,
+      hasExpertise: false,
+    };
+  }
+  get survival(): Skill {
+    return {
+      governingAbility: this.character.Wisdom,
+      isProficient: false,
+      hasExpertise: false,
+    };
+  }
   // Charisma
-  deception: Skill = {
-    governingAbility: Ability.Charisma,
-    isProficient: false,
-    hasExpertise: false,
-  };
-  intimidation: Skill = {
-    governingAbility: Ability.Charisma,
-    isProficient: false,
-    hasExpertise: false,
-  };
-  performance: Skill = {
-    governingAbility: Ability.Charisma,
-    isProficient: false,
-    hasExpertise: false,
-  };
-  persuasion: Skill = {
-    governingAbility: Ability.Charisma,
-    isProficient: false,
-    hasExpertise: false,
-  };
+  get deception(): Skill {
+    return {
+      governingAbility: this.character.Charisma,
+      isProficient: false,
+      hasExpertise: false,
+    };
+  }
+  get intimidation(): Skill {
+    return {
+      governingAbility: this.character.Charisma,
+      isProficient: false,
+      hasExpertise: false,
+    };
+  }
+  get performance(): Skill {
+    return {
+      governingAbility: this.character.Charisma,
+      isProficient: false,
+      hasExpertise: false,
+    };
+  }
+  get persuasion(): Skill {
+    return {
+      governingAbility: this.character.Charisma,
+      isProficient: false,
+      hasExpertise: false,
+    };
+  }
 }
 
 export enum Alignment {
